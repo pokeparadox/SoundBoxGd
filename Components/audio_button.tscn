@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://hvlhpggfeeak"]
+
+[ext_resource type="Script" path="res://Components/audio_button.gd" id="1_smtsg"]
+
+[node name="AudioButton" type="Button"]
+custom_minimum_size = Vector2(96, 96)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -624.0
+offset_bottom = -1184.0
+grow_horizontal = 2
+grow_vertical = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("1_smtsg")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
