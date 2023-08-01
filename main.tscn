@@ -37,3 +37,11 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 script = ExtResource("2_yxiyy")
+
+[node name="ButtonRandom" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "???
+Random"
+
+[connection signal="pressed" from="VBoxContainer/ButtonRandom" to="VBoxContainer/ButtonsPanel" method="_on_button_random_pressed"]

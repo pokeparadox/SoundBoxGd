@@ -61,3 +61,9 @@ func _get_folder_names(root_folder : String, search_type : SearchType = SearchTy
 	else:
 		print("An error occurred when trying to access the path.")
 	return names
+
+
+func _on_button_random_pressed() -> void:
+	var buttons = self.get_children()
+	var selected_button = buttons.pick_random()
+	selected_button.emit_signal("pressed")
