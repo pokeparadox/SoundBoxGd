@@ -1,6 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://hvlhpggfeeak"]
+[gd_scene load_steps=5 format=3 uid="uid://hvlhpggfeeak"]
 
 [ext_resource type="Script" path="res://Components/audio_button.gd" id="1_smtsg"]
+
+[sub_resource type="Animation" id="Animation_xq5in"]
+resource_name = "FlashButton"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.196078)]
+}
+
+[sub_resource type="Animation" id="Animation_lj0hd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t04bj"]
+_data = {
+"FlashButton": SubResource("Animation_xq5in"),
+"RESET": SubResource("Animation_lj0hd")
+}
 
 [node name="AudioButton" type="Button"]
 custom_minimum_size = Vector2(96, 96)
@@ -18,4 +55,10 @@ script = ExtResource("1_smtsg")
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
 
+[node name="ButtonFlashAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t04bj")
+}
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="finished" from="Sound" to="." method="_on_sound_finished"]

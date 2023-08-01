@@ -25,3 +25,8 @@ func load_icon(icon_file_path : String) -> void:
 
 func _on_pressed() -> void:
 	$Sound.play()
+	$ButtonFlashAnim.play("FlashButton")
+
+
+func _on_sound_finished() -> void:
+	$ButtonFlashAnim.stop()
