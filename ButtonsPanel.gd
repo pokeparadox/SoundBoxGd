@@ -1,6 +1,7 @@
 extends HFlowContainer
 
-const BUTTONS_PATH : String = "user://buttons"
+var buttons_dir : String = "/buttons"
+
 const WAV : String = "wav"
 const OGG : String = "ogg"
 const MP3 : String = "mp3"
@@ -14,11 +15,13 @@ enum SearchType
 	ALL
 }
 
+
+
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	var button_dirs = _get_folder_names(BUTTONS_PATH, SearchType.DIR)
+func load_buttons(buttons_path : String) -> void:
+	var button_dirs = _get_folder_names(buttons_path, SearchType.DIR)
 	for bd in button_dirs:
-		var button_files = _get_folder_names(BUTTONS_PATH + "/" + bd, SearchType.FILE)
+		var button_files = _get_folder_names(buttons_path + "/" + bd, SearchType.FILE)
 		var has_sound : bool = false
 		var sound_path : String
 		var has_image : bool = false
@@ -26,7 +29,7 @@ func _ready() -> void:
 		var button_name : String
 		for b in button_files:
 			var ext : String = b.get_extension()
-			var path : String = BUTTONS_PATH + "/" + bd + "/" + b
+			var path : String = buttons_path + "/" + bd + "/" + b
 			if ext == WAV or ext == OGG or ext == MP3:
 				has_sound = true
 				sound_path = path
@@ -65,5 +68,15 @@ func _get_folder_names(root_folder : String, search_type : SearchType = SearchTy
 
 func _on_button_random_pressed() -> void:
 	var buttons = self.get_children()
-	var selected_button = buttons.pick_random()
-	selected_button.emit_signal("pressed")
+	if buttons != null and buttons.size() > 0:
+		var selected_button = buttons.pick_random()
+		if selected_button != null:
+			selected_button.emit_signal("pressed")
+
+func _clear_buttons() -> void:
+	for c in get_children():
+		c.queue_free()
+
+func _on_sound_box_selector_sound_box_changed(box_path) -> void:
+	_clear_buttons()
+	load_buttons(box_path + buttons_dir)

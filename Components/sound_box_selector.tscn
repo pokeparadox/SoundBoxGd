@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdxyloff1kx2o"]
+
+[ext_resource type="Script" path="res://Components/sound_box_selector.gd" id="1_avqmy"]
+
+[node name="SoundBoxSelector" type="HBoxContainer"]
+script = ExtResource("1_avqmy")
+
+[node name="ButtonPrevious" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+tooltip_text = "Previous Sound Box"
+theme_override_font_sizes/font_size = 48
+text = "<"
+
+[node name="LabelSoundBoxName" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "None"
+horizontal_alignment = 1
+
+[node name="ButtonNext" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Next Sound Box"
+theme_override_font_sizes/font_size = 48
+text = ">"
+
+[connection signal="pressed" from="ButtonPrevious" to="." method="_on_button_previous_pressed"]
+[connection signal="pressed" from="ButtonNext" to="." method="_on_button_next_pressed"]
