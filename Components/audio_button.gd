@@ -1,5 +1,12 @@
 extends Button
 
+var twitch_cmd : String
+
+signal twitch_cmd_triggered(cmd : String)
+
+func has_twitch_cmd() -> bool:
+	return twitch_cmd != ""
+
 func load_sound(sound_file_path : String) -> void:
 	var sound_file = FileAccess.open(sound_file_path, FileAccess.READ)
 	var ext = sound_file_path.get_extension()
@@ -23,9 +30,17 @@ func load_icon(icon_file_path : String) -> void:
 		var texture = ImageTexture.create_from_image(image)
 		self.icon = texture
 
+func load_twitch_command(twitch_command_path : String) -> void:
+	var twitch_file = FileAccess.open(twitch_command_path, FileAccess.READ)
+	if twitch_file != null:
+		twitch_cmd = twitch_file.get_line()
+	twitch_file.close()
+
 func _on_pressed() -> void:
 	$Sound.play()
 	$ButtonFlashAnim.play("FlashButton")
+	if has_twitch_cmd():
+		twitch_cmd_triggered.emit(twitch_cmd)
 
 
 func _on_sound_finished() -> void:

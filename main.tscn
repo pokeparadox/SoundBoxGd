@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://csesw5rc8xqct"]
+[gd_scene load_steps=5 format=3 uid="uid://csesw5rc8xqct"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_fnk6e"]
 [ext_resource type="PackedScene" uid="uid://bdxyloff1kx2o" path="res://Components/sound_box_selector.tscn" id="2_ychc4"]
 [ext_resource type="Script" path="res://ButtonsPanel.gd" id="2_yxiyy"]
+[ext_resource type="Script" path="res://addons/gift/gift_node.gd" id="4_1phgw"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -55,6 +56,10 @@ theme_override_font_sizes/font_size = 48
 text = "???
 Random"
 
+[node name="Gift" type="Node" parent="."]
+script = ExtResource("4_1phgw")
+
 [connection signal="pressed" from="VBoxContainer/TitleMenu/ButtonMenu" to="." method="_on_button_menu_pressed"]
 [connection signal="sound_box_changed" from="VBoxContainer/SoundBoxSelector" to="VBoxContainer/ButtonsPanel" method="_on_sound_box_selector_sound_box_changed"]
+[connection signal="twitch_cmd_button_pressed" from="VBoxContainer/ButtonsPanel" to="." method="_on_buttons_panel_twitch_cmd_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonRandom" to="VBoxContainer/ButtonsPanel" method="_on_button_random_pressed"]

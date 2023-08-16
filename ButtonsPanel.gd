@@ -6,6 +6,7 @@ const WAV : String = "wav"
 const OGG : String = "ogg"
 const MP3 : String = "mp3"
 const PNG : String = "png"
+const TWITCH_TXT : String = "twitch.txt"
 var SoundButton := load("res://Components/audio_button.tscn")
 
 enum SearchType
@@ -15,7 +16,7 @@ enum SearchType
 	ALL
 }
 
-
+signal twitch_cmd_button_pressed(cmd : String)
 
 # Called when the node enters the scene tree for the first time.
 func load_buttons(buttons_path : String) -> void:
@@ -27,6 +28,8 @@ func load_buttons(buttons_path : String) -> void:
 		var has_image : bool = false
 		var image_path : String
 		var button_name : String
+		var has_twitch_cmd : bool = false
+		var twitch_cmd_path : String
 		for b in button_files:
 			var ext : String = b.get_extension()
 			var path : String = buttons_path + "/" + bd + "/" + b
@@ -37,15 +40,25 @@ func load_buttons(buttons_path : String) -> void:
 			elif ext == PNG:
 				has_image = true
 				image_path = path
+			elif b == TWITCH_TXT:
+				has_twitch_cmd = true
+				twitch_cmd_path = path
 		var button
 		if has_sound:
 			button = SoundButton.instantiate()
 			button.text = button_name
 			button.load_sound(sound_path)
+			if has_twitch_cmd:
+				button.load_twitch_command(twitch_cmd_path)
+				button.twitch_cmd_triggered.connect(_handle_twitch_cmd_triggered)
 			self.add_child(button)
 		if has_image and button != null:
 			button.load_icon(image_path)
 			
+func _handle_twitch_cmd_triggered(cmd :String):
+	twitch_cmd_button_pressed.emit(cmd)
+	
+
 
 func _get_folder_names(root_folder : String, search_type : SearchType = SearchType.ALL):
 	var names = []
