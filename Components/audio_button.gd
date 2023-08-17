@@ -49,7 +49,8 @@ func _on_sound_finished() -> void:
 func is_playing() -> bool:
 	return $Sound.playing
 
-func _exit_tree() -> void:
-	if $Sound.playing:
-		await $Sound.finished
-		$Sound.queue_free()
+func deferred_free() -> void:
+	$Sound.connect("finished", _do_free)
+	
+func _do_free() -> void:
+	queue_free()
