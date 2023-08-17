@@ -88,7 +88,8 @@ func _on_button_random_pressed() -> void:
 
 func _clear_buttons() -> void:
 	for c in get_children():
-		c.queue_free()
+		if not c.is_playing():
+			c.queue_free()
 
 func _on_sound_box_selector_sound_box_changed(box_path) -> void:
 	_clear_buttons()

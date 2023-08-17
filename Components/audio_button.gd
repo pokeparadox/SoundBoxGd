@@ -45,3 +45,11 @@ func _on_pressed() -> void:
 
 func _on_sound_finished() -> void:
 	$ButtonFlashAnim.stop()
+
+func is_playing() -> bool:
+	return $Sound.playing
+
+func _exit_tree() -> void:
+	if $Sound.playing:
+		await $Sound.finished
+		$Sound.queue_free()
