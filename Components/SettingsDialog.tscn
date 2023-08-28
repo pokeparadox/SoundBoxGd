@@ -24,10 +24,19 @@ horizontal_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="."]
 layout_mode = 2
 
-[node name="LineEditTwitchChannel" type="LineEdit" parent="."]
+[node name="TwitchChannel" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TwitchChannel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-placeholder_text = "Twitch Channel Name"
+text = "Twitch Channel:"
+
+[node name="LineEditTwitchChannel" type="LineEdit" parent="TwitchChannel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Channel Name"
 
 [node name="CheckBoxAutoLogin" type="CheckBox" parent="."]
 layout_mode = 2
@@ -35,10 +44,64 @@ tooltip_text = "If this is unchecked you will have to return here to login."
 theme_override_font_sizes/font_size = 32
 text = "Login on startup"
 
+[node name="HSeparator2" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="Credits" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxCredits" type="VBoxContainer" parent="Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CreditsHeader" type="Label" parent="Credits/VBoxCredits"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Credits and 3rd Party Licenses:"
+
+[node name="Licenses" type="TextEdit" parent="Credits/VBoxCredits"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+text = "Sound Box Gd (c) 2023
+Pirate Games
+Created By: PokeParadox
+Special Thanks: WolfWinnie and RubixPrism
+---
+This project uses GIFT for Twitch integration:
+
+MIT License
+
+Copyright (c) 2019-2023 Max Kross
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"
+
+[node name="HSeparator3" type="HSeparator" parent="."]
+layout_mode = 2
+
 [node name="SaveCancelButtons" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_vertical = 8
 
 [node name="ButtonSave" type="Button" parent="SaveCancelButtons"]
 layout_mode = 2
