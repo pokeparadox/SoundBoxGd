@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfhu3nuoheo72"]
+[gd_scene load_steps=5 format=3 uid="uid://dfhu3nuoheo72"]
 
 [ext_resource type="Script" path="res://Components/SettingsDialog.gd" id="1_14lt8"]
+[ext_resource type="Texture2D" uid="uid://dssi3hqr14jfb" path="res://pirategames.png" id="2_ap86l"]
+[ext_resource type="Texture2D" uid="uid://i3liirmrjnji" path="res://godot.svg" id="3_rgov3"]
+[ext_resource type="Texture2D" uid="uid://rkm6ge1nohu1" path="res://addons/gift/icon.png" id="4_66pvv"]
 
 [node name="SettingsDialog" type="VBoxContainer"]
 anchors_preset = 15
@@ -46,6 +49,8 @@ text = "Login on startup"
 
 [node name="HSeparator2" type="HSeparator" parent="."]
 layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.1
 
 [node name="Credits" type="ScrollContainer" parent="."]
 layout_mode = 2
@@ -69,6 +74,8 @@ text = "Sound Box GD (c) 2023
 Pirate Games
 Created By: PokeParadox
 Special Thanks: WolfWinnie and RubixPrism
+---
+Powered by GodotEngine
 ---
 This project uses GIFT for Twitch integration:
 
@@ -94,9 +101,24 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 "
+editable = false
 
 [node name="HSeparator3" type="HSeparator" parent="."]
 layout_mode = 2
+
+[node name="PirateGamesLogo" type="Sprite2D" parent="."]
+position = Vector2(422, 380)
+texture = ExtResource("2_ap86l")
+
+[node name="GodotLogo" type="Sprite2D" parent="."]
+position = Vector2(243, 477)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_rgov3")
+
+[node name="GiftLogo" type="Sprite2D" parent="."]
+position = Vector2(138, 587)
+scale = Vector2(2, 2)
+texture = ExtResource("4_66pvv")
 
 [node name="SaveCancelButtons" type="HBoxContainer" parent="."]
 layout_mode = 2

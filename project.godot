@@ -15,7 +15,7 @@ config/description="A simple configurable sound effect player utility"
 config/tags=PackedStringArray("tool")
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://SoundBoxGD.png"
 
 [autoload]
 
