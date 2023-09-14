@@ -1,7 +1,5 @@
 extends HFlowContainer
 
-var buttons_dir : String = "/buttons"
-
 const WAV : String = "wav"
 const OGG : String = "ogg"
 const MP3 : String = "mp3"
@@ -95,4 +93,4 @@ func _clear_buttons() -> void:
 
 func _on_sound_box_selector_sound_box_changed(box_path) -> void:
 	_clear_buttons()
-	load_buttons(box_path + buttons_dir)
+	load_buttons(box_path)

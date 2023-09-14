@@ -17,9 +17,9 @@ func _ready() -> void:
 
 func _create_default_folders() -> void:
 	OS.request_permissions()
-	var default_buttons_dir : String = working_dir + "default/buttons"
+	var default_buttons_dir : String = working_dir + "default"
 	if not DirAccess.dir_exists_absolute(default_buttons_dir):
-		DirAccess.make_dir_recursive_absolute(working_dir + "default/buttons")
+		DirAccess.make_dir_recursive_absolute(default_buttons_dir)
 
 func get_boxes():
 	return DirHelper.get_dir_names(working_dir, DirHelper.SearchType.DIR)
