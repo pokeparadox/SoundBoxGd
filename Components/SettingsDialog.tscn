@@ -3,7 +3,9 @@
 [ext_resource type="Script" path="res://Components/SettingsDialog.gd" id="1_14lt8"]
 [ext_resource type="Texture2D" uid="uid://dssi3hqr14jfb" path="res://pirategames.png" id="2_ap86l"]
 [ext_resource type="Texture2D" uid="uid://i3liirmrjnji" path="res://godot.svg" id="3_rgov3"]
-[ext_resource type="Texture2D" uid="uid://rkm6ge1nohu1" path="res://addons/gift/icon.png" id="4_66pvv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jr8ir"]
+load_path = "res://.godot/imported/icon.png-b5cf707f4ba91fefa5df60a746e02900.ctex"
 
 [node name="SettingsDialog" type="VBoxContainer"]
 anchors_preset = 15
@@ -118,7 +120,7 @@ texture = ExtResource("3_rgov3")
 [node name="GiftLogo" type="Sprite2D" parent="."]
 position = Vector2(138, 587)
 scale = Vector2(2, 2)
-texture = ExtResource("4_66pvv")
+texture = SubResource("CompressedTexture2D_jr8ir")
 
 [node name="SaveCancelButtons" type="HBoxContainer" parent="."]
 layout_mode = 2
