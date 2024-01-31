@@ -17,6 +17,10 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://SoundBoxGD.png"
 
+[audio]
+
+driver/enable_input=true
+
 [autoload]
 
 DirHelper="*res://Components/dir_helper.gd"

@@ -10,7 +10,7 @@ layout_mode = 2
 size_flags_horizontal = 2
 tooltip_text = "Previous Sound Box"
 theme_override_font_sizes/font_size = 48
-text = "<"
+text = "  <   "
 
 [node name="LabelSoundBoxName" type="Label" parent="."]
 layout_mode = 2
@@ -23,7 +23,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Next Sound Box"
 theme_override_font_sizes/font_size = 48
-text = ">"
+text = "   >   "
 
 [connection signal="pressed" from="ButtonPrevious" to="." method="_on_button_previous_pressed"]
 [connection signal="pressed" from="ButtonNext" to="." method="_on_button_next_pressed"]

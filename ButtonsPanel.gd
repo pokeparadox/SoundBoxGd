@@ -56,8 +56,6 @@ func load_buttons(buttons_path : String) -> void:
 func _handle_twitch_cmd_triggered(cmd :String):
 	twitch_cmd_button_pressed.emit(cmd)
 	
-
-
 func _get_folder_names(root_folder : String, search_type : SearchType = SearchType.ALL):
 	var names = []
 	var dir = DirAccess.open(root_folder)
@@ -88,9 +86,10 @@ func _clear_buttons() -> void:
 	for c in get_children():
 		if not c.is_playing():
 			c.queue_free()
-		else:
+		elif c is Button:
 			c.deferred_free()
 
 func _on_sound_box_selector_sound_box_changed(box_path) -> void:
 	_clear_buttons()
 	load_buttons(box_path)
+
