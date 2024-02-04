@@ -42,6 +42,10 @@ window/handheld/orientation=1
 
 enabled=PackedStringArray("res://addons/gift/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
